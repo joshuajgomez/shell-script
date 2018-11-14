@@ -1,10 +1,14 @@
 #!/bin/sh
 # author  : Joshua Gomez
 # version : 1.0
-# brief   : shell script to build android projects and fetch apk to current directory
+# brief   : Shell script to build android projects and fetch apk to current directory
 
 # store current path to a variable
 current_path="$PWD"
+
+dms=~/meaa/repo/vendor/quest/Phone/DeviceManagerService
+ps=~/meaa/repo/vendor/quest/Phone/PhoneService
+ph=~/meaa/repo/vendor/quest/Phone/PhoneHMI
 
 # function to print values in yellow color
 print_in_bold_yellow()
@@ -12,7 +16,7 @@ print_in_bold_yellow()
 	echo
 	bold=$(tput bold)
 	YELLOW='\033[1;33m'
-	echo "${YELLOW}${bold}[BUILD-AND-FETCH] >>> $1"
+	echo "${YELLOW}${bold}> [BUILD-AND-FETCH] >>> $1"
 }
 
 # function to print values in yellow color
@@ -21,7 +25,7 @@ print_in_bold_green()
 	echo
 	bold=$(tput bold)
 	GREEN='\033[0;32m'
-	echo "${GREEN}${bold}[BUILD-AND-FETCH] >>> $1"
+	echo "${GREEN}${bold}> [BUILD-AND-FETCH] >>> $1"
 }
 
 # function to build apps and fetch apk to current path
@@ -50,10 +54,25 @@ build_and_fetch()
 	fi
 }
 
-build_and_fetch ~/meaa/repo/vendor/quest/Phone/PhoneHMI
-build_and_fetch ~/meaa/repo/vendor/quest/Phone/PhoneService
-build_and_fetch ~/meaa/repo/vendor/quest/Phone/DeviceManagerService
+option=$1
 
+if [ $# -eq 0 ]
+then
+	build_and_fetch $ph
+	build_and_fetch $ps
+	build_and_fetch $dms
+elif [ $option = "dms" ]
+then
+	build_and_fetch $dms
+elif [ $option = "ps" ]
+then
+	build_and_fetch $ps
+elif [ $option = "ph" ]
+then
+	build_and_fetch $ph
+else 
+	echo Invalid option : Available options are dms, ps, ph
+fi
 
 print_in_bold_green 'SUCCESSFULLY COMPLETED'
 echo
