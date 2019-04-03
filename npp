@@ -1,0 +1,8 @@
+#!/bin/bash 
+
+if [ $# -eq 0 ]
+  then
+    wine /home/quest/softwares/npp.7.6.5.bin.x64/notepad++.exe
+else
+  wine /home/quest/softwares/npp.7.6.5.bin.x64/notepad++.exe $1
+fi
