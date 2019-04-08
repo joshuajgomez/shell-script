@@ -6,9 +6,9 @@
 # store current path to a variable
 current_path="$PWD"
 
-dms=~/meaa/repo/vendor/quest/Phone/DeviceManagerService
-ps=~/meaa/repo/vendor/quest/Phone/PhoneService
-ph=~/meaa/repo/vendor/quest/Phone/PhoneHMI
+dms=~/bin/repo/vendor/quest/Phone/DeviceManagerService
+ps=~/bin/repo/vendor/quest/Phone/PhoneService
+ph=~/bin/repo/vendor/quest/Phone/PhoneHMI
 
 # function to print values in yellow color
 print_in_bold_yellow()
